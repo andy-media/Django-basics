@@ -35,10 +35,12 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
 #   'https://bbq-wo64.onrender.com', 'bbq-wo64.onrender.com', 
-ALLOWED_HOSTS = ['www.brainbattlequiz.org', 'brainbattlequiz.org',   ]
+ALLOWED_HOSTS = ['django-basics-production.up.railway.app/',  '127.0.0.1' ]
+
+CSRF_TRUSTED_ORIGINS = ["https://django-basics-production.up.railway.app/"]
 
     # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -155,13 +157,13 @@ LOGOUT_REDIRECT_URL = 'login'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True,  # Enforce SSL (required for Render)
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.getenv('DATABASE_URL'),
+#         conn_max_age=600,
+#         ssl_require=True,  # Enforce SSL (required for Render)
+#     )
+# }
 
 # DATABASES = {
 #     'default': {
@@ -248,8 +250,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Unfold
 UNFOLD = {
     "SITE_TITLE": "Cocktail Media",
-    "SITE_HEADER": "Cocktail Media",
-    "SITE_DESCRIPTION": "Cocktail Media",
+    "SITE_HEADER": "Cocktail",
+    "SITE_DESCRIPTION": "Cocktail Media website",
     "SITE_FOOTER": "Cocktail Media",
     "SITE_COPYRIGHT": "&copy; 2025 Cocktail Media. All rights reserved.",
     "SITE_LOGO_TEXT": "Cocktail Media",
