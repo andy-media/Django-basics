@@ -35,7 +35,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 
 #   'https://bbq-wo64.onrender.com', 'bbq-wo64.onrender.com', 
 ALLOWED_HOSTS = ['django-basics-production.up.railway.app/',  '127.0.0.1' ]
