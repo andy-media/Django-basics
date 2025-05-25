@@ -1,0 +1,88 @@
+{% extends "website/base.html" %} {% load static %}
+
+
+
+{% block content %}
+	<!-- section main content -->
+	<section class="main-content">
+		<div class="container-xl">
+
+			<div class="row gy-4">
+
+				<div class="col-lg-8">
+
+                    <div class="page-content bordered rounded padding-30">
+
+                        <img src="{% static 'images/other/bbq_about.jpg' %}" alt="Katen Doe" class="rounded mb-4" />
+
+                        <p>Brain Battle Quiz(BBQ) National STEAM Championship is an exciting practical based applied science, tech, engineering, arts and Maths(STEAM) programme aimed at stirring interest in STEAM among children at the basic school level, with the focus of discovering, inspiring and nurturing future scientists for Africa whiles inculcating problem solving skills such as critical thinking, team work and confidence. </p>
+
+                        <p>Since its inception in 2018, the BBQ has discovered and nurtured several young talents and has inspired many to pursue excellence. Every year the BBQ directly impacts 1000s of contestants (learners), coaches (facilitators) and school owners and indirectly impacts over 100,000 children, school alumni, educationists and families across the nation and the globe.</p>
+                        
+                        
+
+                        <hr class="my-4" />
+                      {% include "website/includes/socials.html" %}
+                        
+                    </div>
+
+                </div>
+				<div class="col-lg-4">
+
+					<!-- sidebar -->
+					<div class="sidebar">
+						<!-- widget about -->
+						{% include "website/includes/who_we_are.html" %}
+						<!-- widget popular posts -->
+						{% include "website/includes/popular_post.html" %}
+
+						<!-- widget categories -->
+						{% include "website/includes/explore_cat.html" %}
+
+						<!-- widget newsletter -->
+						{% comment %} <div class="widget rounded">
+							<div class="widget-header text-center">
+								<h3 class="widget-title">Newsletter</h3>
+								<img src="{% static 'images/wave.svg' %}" class="wave" alt="wave" />
+							</div>
+							<div class="widget-content">
+								<span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
+								<form>
+									<div class="mb-2">
+										<input class="form-control w-100 text-center" placeholder="Email address…" type="email">
+									</div>
+									<button class="btn btn-default btn-full" type="submit">Sign Up</button>
+								</form>
+								<span class="newsletter-privacy text-center mt-3">By signing up, you agree to our <a href="#">Privacy Policy</a></span>
+							</div>		
+						</div> {% endcomment %}
+
+						<!-- widget post carousel -->
+						{% include "website/includes/celebrations.html" %}
+
+						<!-- widget advertisement -->
+						<div class="widget no-container rounded text-md-center">
+							<span class="ads-title">- Sponsored Ad -</span>
+							<a href="#" class="widget-ads">
+								<img src="{% static 'images/ads/ano_ad.png' %}" alt="Advertisement" />	
+							</a>
+						</div>
+
+						<!-- widget tags -->
+						{% include "website/includes/tags.html" %}	
+						
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+	<!-- instagram feed -->
+	{% include "website/includes/instagram.html" %}
+	{% endblock content %}
+
+	

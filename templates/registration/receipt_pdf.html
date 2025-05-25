@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Receipt - {{ school.name_of_school }}</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .details {
+        margin: 20px 0;
+      }
+      .footer {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 0.8em;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">Brain Battle Quiz</h1>
+      <h2>Payment Receipt</h2>
+    </div>
+
+    <div class="details">
+      <p><strong>School Name:</strong> {{ school.name_of_school }}</p>
+      <p><strong>School Name:</strong> {{ school.region }}</p>
+      <p>
+        <strong>Payment Date:</strong> {{ payment.date_created|date:"F j, Y" }}
+      </p>
+      <p><strong>Payment Reference:</strong> {{ payment.paystack_ref }}</p>
+      <p><strong>Amount:</strong> {{ payment.amount }}</p>
+      <p>
+        <strong>Status:</strong> {% if payment.verified %}Verified{% else
+        %}Pending{% endif %}
+      </p>
+    </div>
+
+    <div class="footer">
+      <p>Thank you for registering with Brain Battle Quiz </p>
+      <p>This is an automated receipt. No signature required.</p>
+    </div>
+  </body>
+</html>

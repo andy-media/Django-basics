@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Coach Information{% endblock %} 
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h3>Coach Information</h3>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-4 p-3 border rounded">
+              <h5>Science Coach</h5>
+              {{ forms.science|crispy }}
+            </div>
+
+            <div class="mb-4 p-3 border rounded">
+              <h5>Maths Coach</h5>
+              {{ forms.maths|crispy }}
+            </div>
+
+            <div class="mb-4 p-3 border rounded">
+              <h5>Computing Coach</h5>
+              {{ forms.computing|crispy }}
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              
+              <a href="{% url 'contestant_info' %}" class="btn btn-secondary"
+                >Back</a
+              >
+              <button type="submit" class="btn btn-primary">
+                Complete Registration
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

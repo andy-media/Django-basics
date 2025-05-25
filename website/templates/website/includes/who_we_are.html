@@ -1,0 +1,20 @@
+
+{% load static %}
+
+<!-- widget about -->
+<div class="widget rounded">
+    <div
+      class="widget-about data-bg-image text-center"
+      data-bg-image="{% static 'images/map-bg.png' %}"
+    >
+      <img
+        src="{% static 'images/logo.png' %}"
+        alt="logo"
+        class="mb-4"
+      />
+      <p class="mb-4">
+        Brain Battle Quiz(BBQ) National STEAM Championship is an exciting practical based applied science, tech, engineering, arts and Maths(STEAM) programme aimed at stirring interest in STEAM among children at the basic school level
+      </p>
+      {% include "website/includes/socials.html" %}
+    </div>
+  </div>

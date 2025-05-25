@@ -1,0 +1,41 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% block content %}
+
+
+{% comment %} {% if results %}
+  <ul>
+    {% for result in results %}
+    <pre>{{ result }}</pre>
+      <li><a href="{% url 'blog_detail' slug=result.blog_slug %}">{{ result.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No results found.</p>
+{% endif %} {% endcomment %}
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Search Results for "{{ query }}"</th>
+      
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    {% if results %}
+     {% for result in results %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td><a href="{% url 'blog_detail' slug=result.blog_slug %}">{{ result.title }}</a></td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+      <td>No results found. </td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+</div>
+{% endblock content %}

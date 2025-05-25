@@ -1,0 +1,16 @@
+Payment Confirmation
+
+Dear {{ school.name_of_school }},
+
+We have successfully received your payment of GH¢{{ payment.amount }}.
+
+Payment Details:
+- Reference: {{ payment.paystack_ref }}
+- Date: {{ payment.date_created|date:"F j, Y" }}
+- Status: Verified
+
+You can download your receipt from your dashboard.
+
+Thank you for registering with {{ site_name }}!
+
+If you have any questions, please contact us at {{ contact_email }}

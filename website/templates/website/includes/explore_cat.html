@@ -1,0 +1,21 @@
+{% load static %}
+<div class="widget rounded">
+            <div class="widget-header text-center">
+              <h3 class="widget-title">Explore Topics</h3>
+              <img src={% static "images/wave.svg"%} class="wave" alt="wave" />
+            </div>
+            <div class="widget-content">
+              <ul class="list">
+                {% for category in cat %}
+                  <li>
+                    <a href="{% url 'category' category.slug %}" {% if category.slug == active_category %}class="active"{% endif %}>
+                      {{ category.name }}
+                    </a>
+                    <span>({{ category.category.count }})</span>
+                  </li>
+                {% empty %}
+                  <li>No categories found</li>
+                {% endfor %}
+              </ul>
+            </div>
+</div>

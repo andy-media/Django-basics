@@ -1,0 +1,78 @@
+{% load static %}
+<header class="header-default">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-xl">
+        <!-- site logo -->
+        <a class="navbar-brand" href="{% url 'index' %}"
+          ><img src="{% static 'images/logo.png' %}" alt="logo"
+        /></a>
+  
+        <div class="collapse navbar-collapse">
+          <!-- menus -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown active">
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
+              {% comment %}
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="index.html">Magazine</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="personal.html">Personal</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="personal-alt.html"
+                    >Personal Alt</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="minimal.html">Minimal</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="classic.html">Classic</a>
+                </li>
+              </ul>
+              {% endcomment %}
+            </li>
+  
+            {% for post in cat %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'category' post.slug %}"
+                >{{post.name}}
+              </a>
+            </li>
+            {% endfor %}
+  
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'contact' %}">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'login' %}">Login/Register</a>
+              </li>
+          </ul>
+        </div>
+  
+        <!-- header right section -->
+        <div class="header-right">
+          <!-- social icons -->
+           
+            {% include "website/includes/socials.html" %}
+           
+          
+          <!-- header buttons -->
+          <div class="header-buttons">
+            <button class="search icon-button">
+              <i class="icon-magnifier"></i>
+            </button>
+            <button class="burger-menu icon-button">
+              <span class="burger-icon"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  

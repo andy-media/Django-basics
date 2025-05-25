@@ -1,0 +1,163 @@
+{% extends "base.html" %} {% load static %} {% block title %} Dashboard
+{%endblock title %} {% block content %}
+
+<div class="container mt-5 vh-100">
+  <div class="row vh-100">
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h3>School Dashboard</h3>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h4>School Information</h4>
+              <ul class="list-group mb-4">
+                <li class="list-group-item">
+                  <strong>Name of School:</strong> {{ school.name_of_school }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Region:</strong> {{ school.region }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Location:</strong> {{ school.location }}
+                </li>
+                <li class="list-group-item">
+                  <strong>School Head:</strong> {{ school.school_head_name }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Contact:</strong> {{ school.school_contact }}
+                </li>
+                <li class="list-group-item">
+                  <strong>Status:</strong>
+                  {% if school.payment_verified %}
+                  <span class="badge bg-success">Verified</span>
+                  {% else %}
+                  <span class="badge bg-warning">Pending Verification</span>
+                  {% endif %}
+                </li>
+              </ul>
+              <a href="{% url 'school_info' %}" class="btn btn-outline-primary"
+                >Edit School Info</a
+              >
+            </div>
+
+            <div class="col-md-6">
+              <h4>Payment Status</h4>
+              {% if payments %}
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Receipt</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for payment in payments %}
+                    <tr>
+                      <td>{{ payment.date_created|date:"M d, Y" }}</td>
+                      <td>{{ payment.amount }}</td>
+                      <td>
+                        {% if payment.verified %}
+                        <span class="badge bg-success">Verified</span>
+                        {% else %}
+                        <span class="badge bg-warning">Pending</span>
+                        {% endif %}
+                      </td>
+                      <td>
+                        {% if payment.verified %}
+                        <a
+                          href="{% url 'receipt_pdf' payment.id %}"
+                          class="btn btn-sm btn-outline-primary"
+                        >
+                          Download Receipt
+                        </a>
+                        ---
+                        <span>
+                          <a
+                            href="{% url 'download_all' %}"
+                            class="btn btn-sm btn-outline-success"
+                            >Download Past Ques</a
+                          >
+                        </span>
+
+                        {% endif %}
+                      </td>
+                    </tr>
+
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              {% else %}
+              <div class="alert alert-info">No payment records found.</div>
+              {% endif %} {% if not school.payment_verified %}
+              <a href="{% url 'payment' %}" class="btn btn-primary mt-3"
+                >Make Payment</a
+              >
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+              <h4>Contestants</h4>
+            </div>
+            <div class="card-body">
+              {% if contestants %}
+              <ul class="list-group">
+                {% for contestant in contestants %}
+                <li class="list-group-item">
+                  {{ contestant.name }} ({{ contestant.year_form }})
+                </li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              <p class="text-muted">No contestants registered yet.</p>
+              {% endif %}
+              <a
+                href="{% url 'contestant_info' %}"
+                class="btn btn-outline-info mt-3"
+                >Edit Contestants</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+              <h4>Coaches</h4>
+            </div>
+            <div class="card-body">
+              {% if coaches %}
+              <ul class="list-group">
+                {% for coach in coaches %}
+                <li class="list-group-item">
+                  <strong>{{ coach.get_coach_type_display }}:</strong>
+                  {{ coach.name }} ({{ coach.contact_number }})
+                </li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              <p class="text-muted">No coaches registered yet.</p>
+              {% endif %}
+              <a href="{% url 'coach_info' %}" class="btn btn-outline-info mt-3"
+                >Edit Coaches</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

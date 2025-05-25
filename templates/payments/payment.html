@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Make Payment{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>Complete Your Registration</h3>
+                </div>
+                <div class="card-body">
+                    {% if school.payment_verified %}
+                        <div class="alert alert-success">
+                            Your payment has already been verified. Thank you!
+                        </div>
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary">
+                            Return to Dashboard
+                        </a>
+                    {% else %}
+                        <div class="alert alert-info mb-4">
+                            <h4>Payment Amount: GH¢ 1,500.00</h4>
+                            <p>Please complete your payment to finalize registration.</p>
+                        </div>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success btn-lg w-100">
+                                Proceed to Paystack Payment
+                            </button>
+                        </form>
+
+                        <div class="mt-4">
+                            <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">
+                                Back to Dashboard
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% if not school.payment_verified %}
+<script src="https://js.paystack.co/v1/inline.js"></script>
+{% endif %}
+{% endblock %}

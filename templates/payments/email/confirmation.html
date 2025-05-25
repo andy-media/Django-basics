@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Confirmation</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #f8f9fa; padding: 20px; text-align: center; }
+        .content { padding: 20px; }
+        .footer { margin-top: 20px; font-size: 0.8em; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Payment Confirmation</h2>
+        </div>
+        <div class="content">
+            <p>Dear {{ school.name }},</p>
+            <p>We have successfully received your payment of <strong>₦{{ payment.amount }}</strong>.</p>
+            <p>Payment Details:</p>
+            <ul>
+                <li>Reference: {{ payment.paystack_ref }}</li>
+                <li>Date: {{ payment.date_created|date:"F j, Y" }}</li>
+                <li>Status: Verified</li>
+            </ul>
+            <p>You can download your receipt from your dashboard.</p>
+            <p>Thank you for registering with {{ site_name }}!</p>
+        </div>
+        <div class="footer">
+            <p>If you have any questions, please contact us at <a href="mailto:{{ contact_email }}">{{ contact_email }}</a></p>
+        </div>
+    </div>
+</body>
+</html>
