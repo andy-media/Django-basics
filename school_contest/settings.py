@@ -35,12 +35,12 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
 #   'https://bbq-wo64.onrender.com', 'bbq-wo64.onrender.com', 
-ALLOWED_HOSTS = ['django-basics-production.up.railway.app/',  '127.0.0.1' ]
+ALLOWED_HOSTS = ['django-basics-production.up.railway.app',  '127.0.0.1' ]
 
-CSRF_TRUSTED_ORIGINS = ["https://django-basics-production.up.railway.app/"]
+# CSRF_TRUSTED_ORIGINS = ["https://django-basics-production.up.railway.app"]
 
     # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
